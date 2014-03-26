@@ -7,12 +7,14 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'bootstrap-sass', '~> 3.1.1'
+gem 'devise'
 group :doc do
   gem 'sdoc', require: false
 end
 group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails'
+  gem 'factory_girl_rails'
 end
 group :test do
   gem 'capybara'

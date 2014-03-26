@@ -29,3 +29,17 @@ h1 {
       margin-right: 8px;
        }
 }
+
+.panel-heading h3 {
+  margin-top: 10px;
+}
+
+#error_explanation {
+  @extend .alert;
+  @extend .alert-danger;
+}
+
+#error_explanation h2 {
+  font-size: 1.5em;
+  margin-top: 0px;
+}

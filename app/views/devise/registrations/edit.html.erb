@@ -1,0 +1,48 @@
+<% provide(:oldal_cim, 'AK-Felh.szerkesztés') %>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3><%= current_user.email %> adatainak szerkesztése</h3>
+      </div>
+
+      <div class="panel-body">
+      <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+      <%= devise_error_messages! %>
+      <div class="form-group">
+        <%= f.label :email, "A felhasználó email címe" %>  
+        <%= f.email_field :email, :autofocus => true, class: 'form-control' %>
+      </div>
+
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
+
+      <div class="form-group">
+        <%= f.label :password, "Jelszó (hagyja üresen, ha nem akarja megváltoztatni)" %> 
+        <%= f.password_field :password, :autocomplete => "off", class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :password_confirmation, "A jelszó még egyszer" %>
+        <%= f.password_field :password_confirmation, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :current_password, "A jelenlegi jelszó (a változtatások érvényesítéséhez)" %>
+        <%= f.password_field :current_password, class: 'form-control' %>
+      </div>
+        <%= f.submit "Adatok frissítése", class: 'btn btn-primary btn-lg btn-block' %>
+      <% end %> <!--form_for -->
+      </div> <!--panel-body -->
+    </div> <!--panel-warning -->
+    <div class="col-md-8 col-md-offset-2">  
+      <div class="panel panel-danger">
+        <div class="panel-heading">
+          <h5>A felhasználó törlése, jól gondolja meg</h5>
+        </div>
+        <div class="panel-body">
+          <%= link_to "Felhasználó törlése", registration_path(resource_name), data: { confirm: "Jól meggondolta?" }, :method => :delete, class: 'btn btn-danger btn-lg btn-block' %>
+        </div>  
+      </div>
+    </div> 
+  </div> <!--col-md -->
+</div> <!--row -->
