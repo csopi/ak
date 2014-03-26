@@ -1,0 +1,17 @@
+<% provide(:oldal_cim, 'AK-Projekt adatok') %>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>A projekt neve:</b>
+  <%= @project.name %>
+</p>
+
+<p>
+  <b>A projekt adatai:</b>
+  <%= @project.description %>
+</p>
+<hr>
+<h4>A projektre eddig beszállított anyagok:</h4>
+
+
+<%= link_to 'Új projekt', new_project_path, class: "btn btn-primary" %>

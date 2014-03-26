@@ -190,7 +190,7 @@ hu:
       long: ! '%Y. %B %e., %A, %H:%M'
       short: ! '%b %e., %H:%M'
     pm: du.
-  # remove these aliases after 'activemodel' and 'activerecord' namespaces are removed from Rails repository
+    # remove these aliases after 'activemodel' and 'activerecord' namespaces are removed from Rails repository
   activemodel:
     errors:
       <<: *errors

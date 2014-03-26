@@ -5,4 +5,10 @@ FactoryGirl.define do
     password "Tikos655"
     password_confirmation "Tikos655"
   end
+
+  factory :project do
+    name        "Első projektem"
+    description "8200 Veszprém, Kisvirág u. 26. - felújítási munkák"
+    user_id     "1"
+  end
 end

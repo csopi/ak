@@ -1,4 +1,5 @@
 require 'spec_helper'
+
 feature "Felhasználó szerkesztése" do
   let!(:user) do
     user = FactoryGirl.create(:user)

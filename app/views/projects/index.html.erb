@@ -1,0 +1,24 @@
+<% provide(:oldal_cim, 'AK-Projektek') %>
+<h1>Projektek</h1>
+
+<table class="table">
+  <tr>
+    <th>A projekt neve</th>
+    <th>A projekt adatai</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @projects.each do |project| %>
+  <tr>
+    <td><%= link_to project.name, project_path(project) %></td>
+    <td><%= truncate(project.description, :length => 70, :separator => ' ' ) %></td>
+    <td><%= link_to 'Projekt név és leírás szerkesztése', edit_project_path(project) %></td>
+    <td><%= link_to 'Projekt törlése', project, method: :delete, data: { confirm: 'Biztosan törlöd a projektet?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Új projekt', new_project_path, class: "btn btn-primary" %>
