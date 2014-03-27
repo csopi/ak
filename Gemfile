@@ -8,6 +8,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'bootstrap-sass', '~> 3.1.1'
 gem 'devise'
+gem 'simple_form'
 group :doc do
   gem 'sdoc', require: false
 end

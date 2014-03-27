@@ -1,0 +1,25 @@
+<% provide(:oldal_cim, 'AK-Anyagok') %>
+<h1>Anyagok</h1>
+
+<table class="table table-condensed">
+  <tr>
+    <th>Anyag neve</th>
+    <th>Mértékegysége</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @items.each do |item| %>
+  <tr>
+    <td><%= item.name %></td>
+    <td><%= item.unit.name %></td>
+    <td><%= link_to 'Anyag szerkesztése', edit_item_path(item) %></td>
+    <td><%= link_to 'Anyag törlése', item, method: :delete, data: { confirm: 'Biztosan törlöd az anyagot?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Új anyag', new_item_path, class: "btn btn-primary" %>

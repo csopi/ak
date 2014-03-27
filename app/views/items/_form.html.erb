@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+    <div class="panel panel-primary">
+       <div class="panel-heading">
+        <% if @item.new_record? %>
+          <h3>Anyag létrehozása</h3>
+        <% else %>
+          <h3>Anyag szerkesztése</h3>
+        <% end %>
+      </div>
+      <div class="panel-body">
+        <%= simple_form_for @item do |f| %>
+          <% if @item.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= @item.errors.count %> hibát kérem javítson ki:</h2>
+
+              <ul>
+              <% @item.errors.full_messages.each do |msg| %>
+                <% if msg.include? "Unit" %>
+                  <% msg = msg.sub('Unit', 'A mértékegység') %>
+                <% end %>
+                <li><%= msg %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+          <div class="field">
+            <%= f.input :name, label: "Az anyag neve", :autofocus => true, class: 'form-control' %>
+          </div>
+          <div class="dropdown">
+            <%= f.association :unit, label: "Az anyag mértékegysége" %>  
+          </div></br>
+          <% if @item.new_record? %>
+            <%= f.submit "Anyag létrehozása", class: 'btn btn-primary btn-lg btn-block' %>
+          <% else %>
+            <%= f.submit "Anyag frissítése", class: 'btn btn-primary btn-lg btn-block' %>
+          <% end %>
+        <% end %>
+      </div> <!--panel-body -->
+    </div> <!--panel-primary -->
+  </div> <!--col-md4 -->
+</div> <!--row -->

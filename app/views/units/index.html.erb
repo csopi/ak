@@ -1,0 +1,23 @@
+<% provide(:oldal_cim, 'AK-Mértékegységek') %>
+
+<h1>Mértékegységek</h1>
+
+<table class="table table-condensed">
+  <tr>
+    <th>Mértékegység neve</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @units.each do |unit| %>
+  <tr>
+    <td><%= unit.name %></td>
+    <td><%= link_to 'Mértékegység szerkesztése', edit_unit_path(unit) %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Új mértékegység', new_unit_path, class: "btn btn-primary" %>
