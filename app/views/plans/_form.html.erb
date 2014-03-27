@@ -1,0 +1,5 @@
+<%= simple_form_for [@project, @plan] do |f| %>
+  <%= f.association :item %>
+  <%= f.input :quantity, as: :decimal %>
+  <%= f.button :submit %>
+<% end %>

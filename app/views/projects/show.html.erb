@@ -10,6 +10,7 @@
   <b>A projekt adatai:</b>
   <%= @project.description %>
 </p>
+<%= link_to 'Tervezett anyagfelhasználás', project_plans_path(@project), class: "btn btn-primary btn-xs" %>
 <hr>
 <h4>A projektre eddig beszállított anyagok:</h4>
 
