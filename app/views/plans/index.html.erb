@@ -1,10 +1,12 @@
-<h3>A projekt tervezett anyagfelhasználása</h3>
-
+<h2>
+  <%= @project.name + ' tervezett anyagfelhasználása' %>
+</h2>
+ 
 <table class="table">
   <tbody>
     <% @project.plans.each do |plan| %>
       <tr>
-        <td><%= plan.item.name + ' ' + (plan.quantity).to_s + ' ' + plan.item.unit.name %></td>
+        <td><%= plan.item.name + ' :  '%><strong><%= (plan.quantity).to_s + ' ' + plan.item.unit.name %></strong> </td>
         <td><%= link_to 'Sor szerkesztése', edit_project_plan_path(@project, plan) %></td>
         <td><%= link_to 'Anyag törlése', project_plan_path(@project, plan), method: :delete, data: { confirm: 'Biztosan törlöd a sort?' } %></td>
       </tr>
@@ -14,4 +16,5 @@
 
 <p>
   <%= link_to 'Új anyag hozzáadása', new_project_plan_path, class: 'btn btn-primary' %>
+  <%= link_to 'Visszalépés a projekthez', project_path(@project), class: 'btn btn-default btn-xs' %>
 </p>

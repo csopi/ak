@@ -1,6 +1,7 @@
 class PlansController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_project, only: [:index, :new, :edit, :create, :update, :destroy]
+  before_action :set_plan, only: [:edit, :update, :destroy]
   
   def index
     @project.plans.collect
@@ -11,6 +12,7 @@ class PlansController < ApplicationController
   end
 
   def edit
+    @plan = @project.plans.find(@plan.id)
   end
 
   def create
@@ -29,14 +31,14 @@ class PlansController < ApplicationController
 
   def update
     if @plan.update(plan_params)
-      redirect_to plans_url, notice: 'A sor sikeresen szerkesztve.'
+      redirect_to project_plans_url, notice: 'A sor sikeresen szerkesztve.'
     else
       render action: 'edit'
     end
   end
 
   def destroy
-    @project.plans.destroy(@project.plans)
+    @plan.destroy
     redirect_to project_plans_url, notice: 'A sor törölve.'
   end
 
@@ -48,4 +50,8 @@ private
   def plan_params
     params.require(:plan).permit(:item_id, :quantity)
   end
+
+  def set_plan
+    @plan = @project.plans.find(params[:id])
+  end  
 end
