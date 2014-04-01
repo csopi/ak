@@ -23,13 +23,14 @@
           <% end %>
           <% if @plan.new_record? %>
             <div class="field">
-              <%= f.association :item, label: 'Az anyag neve', :autofocus => true, include_blank: false %>
+              <%= f.association :item, label: 'A tervezett anyag neve', :autofocus => true, include_blank: false %>
             </div>
           <% else %>
             <h4><%= @plan.item.name %></h4>
           <% end %>
+          </br>
           <div class="field">
-            <%= f.input :quantity, as: :decimal, label: 'Tervezett mennyiség az anyagból' %>
+            <%= f.input :quantity, as: :decimal, label: 'Mennyiség a tevezett anyagból' %>
           </div>
           </br>
           <% if @plan.new_record? %>
