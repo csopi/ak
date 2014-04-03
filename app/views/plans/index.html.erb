@@ -1,4 +1,4 @@
-<% provide(:oldal_cim, 'AK - Tervezett anyagfelhasználás') %>
+<% provide(:oldal_cim, 'AK-Tervezett anyagfelhasználás') %>
 
 <h2>
   <%= @project.name + ' tervezett anyagfelhasználása' %>
@@ -10,13 +10,13 @@
       <tr>
         <td><%= plan.item.name + ' :  '%><strong><%= (plan.quantity).to_s + ' ' + plan.item.unit.name %></strong> </td>
         <td><%= link_to 'Sor szerkesztése', edit_project_plan_path(@project, plan) %></td>
-        <td><%= link_to 'Anyag törlése', project_plan_path(@project, plan), method: :delete, data: { confirm: 'Biztosan törlöd a sort?' } %></td>
+        <td><%= link_to 'Sor törlése', project_plan_path(@project, plan), method: :delete, data: { confirm: 'Biztosan törlöd a sort?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <p>
-  <%= link_to 'Új anyag hozzáadása', new_project_plan_path, class: 'btn btn-primary' %>
+  <%= link_to 'Anyag hozzáadása', new_project_plan_path, class: 'btn btn-primary' %>
   <%= link_to 'Visszalépés a projekthez', project_path(@project), class: 'btn btn-default btn-xs' %>
 </p>
