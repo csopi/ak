@@ -20,6 +20,7 @@ end
 group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
+  gem 'launchy', '~> 2.3.0'
 end
 group :production do
   gem 'pg'

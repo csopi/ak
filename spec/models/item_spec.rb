@@ -33,7 +33,7 @@ describe Item do
     it { should_not be_valid }
   end
 
-  describe "duplán nem szerepelhetnek anyag nevek nevek" do
+  describe "duplán nem szerepelhetnek anyag nevek" do
     before do
       item_with_same_name = @item.dup
       item_with_same_name.save

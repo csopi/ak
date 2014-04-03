@@ -29,7 +29,7 @@ class ProjectsController < ApplicationController
 
   def update
     if @project.update(project_params)
-      redirect_to @project, notice: 'A projekt adatait sikeresen frissítette.'
+      redirect_to projects_url, notice: 'A projekt adatait sikeresen frissítette.'
     else
       render action: 'edit'
     end

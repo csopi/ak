@@ -21,6 +21,9 @@ class PlansController < ApplicationController
     if @project.plans.where(:item_id => @plan.item_id).blank?
       @plan.save
       redirect_to project_plans_url
+    elsif
+      @plan.quantity.nil?
+      redirect_to project_plans_url, :flash => { :error => "Nem megfelelő adatot adott meg!" }
     else  
       new_plan = @project.plans.where(item_id: @plan.item_id).first_or_initialize
       new_plan.quantity += @plan.quantity
@@ -44,7 +47,9 @@ class PlansController < ApplicationController
 
 private
   def set_project
-    @project = Project.find(params[:project_id])
+    @project = current_user.projects.find(params[:project_id])
+    rescue ActiveRecord::RecordNotFound
+      redirect_to projects_path, :flash => { :error => "A projekt nem található." }
   end
 
   def plan_params

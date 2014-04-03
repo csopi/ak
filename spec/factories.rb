@@ -20,4 +20,11 @@ FactoryGirl.define do
   factory :unit do
     name        "klts"
   end
+
+  factory :plan do
+    id          "1"
+    item_id     "1"
+    project_id  "1"
+    quantity    "5.67"
+  end
 end
