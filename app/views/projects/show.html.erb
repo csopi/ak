@@ -2,12 +2,34 @@
 <p id="notice"><%= notice %></p>
 
 <h2>
-  <%= @project.name %>
+  <%= @project.name + ' - beszállított anyagok' %>
 </h2>
 
-<hr>
-<h4>A projektre eddig beszállított anyagok:</h4>
+<table id="currents" class="table">
+  <thead>
+    <tr>
+      <th>Anyag neve</th>
+      <th>Mennyisége</th>
+      <th>Mennyiségi egysége</th>
+      <th>Bizonylat</th>
+      <th>Beszállítás dátuma</th>
+      <th>Sor törlése</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @project.currents.each do |current| %>
+      <tr>
+        <td><%= link_to current.item.name, edit_project_current_path(@project, current) %>
+        <td><%= current.quantity  %></td>
+        <td><%= current.item.unit.name  %></td>
+        <td><%= current.pass %> </td>
+        <td><%= current.delivery %> </td>
+        <td><%= link_to 'Sor törlése', project_current_path(@project, current), method: :delete, data: { confirm: 'Biztosan törlöd a sort?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 
-<%= link_to 'Anyag beszállítás', new_project_path, class: "btn btn-primary" %> <hr>
+<%= link_to 'Anyag beszállítás', new_project_current_path(@project), class: "btn btn-primary" %> <hr>
 <%= link_to 'Tervezett anyagfelhasználás', project_plans_path(@project), class: "btn btn-default btn-xs" %>

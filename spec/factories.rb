@@ -27,4 +27,13 @@ FactoryGirl.define do
     project_id  "1"
     quantity    "5.67"
   end
+
+  factory :current do
+    id          "1"
+    item_id     "1"
+    project_id  "1"
+    quantity    "45"
+    pass        "Szállítólevél: RT2365"
+    delivery    "2014-03-31"
+  end
 end

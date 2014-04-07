@@ -5,10 +5,12 @@ gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
+gem 'jquery-turbolinks'
 gem 'turbolinks'
 gem 'bootstrap-sass', '~> 3.1.1'
 gem 'devise'
 gem 'simple_form'
+gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
 group :doc do
   gem 'sdoc', require: false
 end

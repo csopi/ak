@@ -40,6 +40,28 @@ class ProjectsController < ApplicationController
     redirect_to projects_url, notice: 'A projekt törölve.'
   end
 
+  def i18n
+    locale = {
+        "sProcessing" =>  "Dolgozunk...",
+        "sLengthMenu" =>  "_MENU_ sort mutasson oldalanként",
+        "sZeroRecords" => "Adatok nincsenek",
+        "sInfo" =>         "  _TOTAL_ sor van összesen, _START_ - _END_ sorok láthatóak most",
+        "sInfoEmpty"  =>   "Nincs adat",
+        "sInfoFiltered" => "(az adatok amiket most lát szűrtek, _MAX_ sor van összesen)",
+        "sInfoPostFix" =>  "",
+        "sSearch" =>       "Keresés:",
+        "sUrl" =>          "",
+        "oPaginate" => {
+          "sFirst"  =>   "Első",
+          "sPrevious" => "Előző",
+          "sNext" =>    "Következő",
+          "sLast" =>   "Utolsó"
+        }
+    }
+
+    render :json => locale
+  end
+
   private
     def find_proj
       @project = current_user.projects.find(params[:id])

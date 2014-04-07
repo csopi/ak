@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+    <div class="panel panel-primary">
+       <div class="panel-heading">
+        <% if @current.new_record? %>
+          <h3>Anyag beszállítás</h3>
+        <% else %>
+          <h3>Beszállított anyag sor módosítása</h3>
+        <% end %>
+      </div>
+      <div class="panel-body">
+        <%= simple_form_for [@project, @current] do |f| %>
+          <% if @project.errors.any? %>
+            <div id="error_excurrentation">
+              <h2><%= @project.errors.count %> hibát kérem javítson ki:</h2>
+              <ul>
+              <% @project.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+          <% if @current.new_record? %>
+            <div class="field">
+              <%= f.association :item, label: 'A beszállított anyag neve', :autofocus => true, include_blank: false %>
+            </div>
+          <% else %>
+            <h4><%= @current.item.name %></h4>
+          <% end %>
+          </br>
+          <div class="field">
+            <%= f.input :quantity, as: :decimal, label: 'Mennyiség az anyagból' %>
+          </div>
+          <div class="field">
+            <%= f.input :pass, label: 'A bizonylat neve és száma' %>
+          </div>
+          <div class="field">
+            <%= f.input :delivery, label: 'A beszállítás időpontja' %>
+          </div>
+          </br>
+          <% if @current.new_record? %>
+            <%= f.submit "Anyag sor létrehozása", class: 'btn btn-primary btn-lg btn-block' %>
+          <% else %>
+            <%= f.submit "Anyag sor frissítése", class: 'btn btn-primary btn-lg btn-block' %>
+          <% end %>
+        <% end %>
+      </div> <!--panel-body -->
+    </div> <!--panel-primary -->
+  </div> <!--col-md4 -->
+</div> <!--row -->
