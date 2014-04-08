@@ -47,7 +47,7 @@ feature "Tervezett anyag szerkesztése" do
     expect(page).to have_link('Kijelentkezés')
     expect(page).to have_link('Az alkalmazásról')
     expect(page).to have_link('Kapcsolat')
-    page.should have_selector('h2', text: 'Első projektem tervezett anyagfelhasználása')
+    page.should have_selector('h2', text: 'Első projektem - tervezett anyagfelhasználása')
     expect(page).to have_selector('tr', plan.item.name)
     expect(page).to have_selector('tr', plan.item.unit.name)
     expect(page).to have_link('Sor szerkesztése')

@@ -3,9 +3,17 @@
     <div class="panel panel-primary">
        <div class="panel-heading">
         <% if @plan.new_record? %>
-          <h3>Tervezett anyag sor felvitele</h3>
+          <h3>
+            <%= @project.name %></br>
+            <span class="glyphicon glyphicon-plus"></span></br>
+            <%= 'Tervezett anyag sor felvitele' %>
+          </h3>
         <% else %>
-          <h3>Tervezett anyag sor módosítása</h3>
+          <h3>
+            <%= @project.name %></br>
+            <span class="glyphicon glyphicon-pencil"></span></br>
+            <%= 'Tervezett anyag sor módosítása' %>
+          </h3>
         <% end %>
       </div>
       <div class="panel-body">

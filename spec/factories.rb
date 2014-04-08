@@ -36,4 +36,13 @@ FactoryGirl.define do
     pass        "Szállítólevél: RT2365"
     delivery    "2014-03-31"
   end
+
+  factory :depot do
+    id          "1"
+    item_id     "1"
+    user_id     "1"
+    quantity    "45"
+    pass        "Szállítólevél: RT2365"
+    delivery    "2014-03-31"
+  end
 end

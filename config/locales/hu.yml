@@ -210,5 +210,8 @@ hu:
         name: 'A név'
       item:
         name: 'A név'
+      depot:
+        quantity: 'A mennyiség'
+        pass: 'A bizonylat'
       errors:
       <<: *errors

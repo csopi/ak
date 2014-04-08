@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140407191603) do
+ActiveRecord::Schema.define(version: 20140408160037) do
 
   create_table "currents", force: true do |t|
     t.integer  "item_id"
@@ -19,6 +19,16 @@ ActiveRecord::Schema.define(version: 20140407191603) do
     t.decimal  "quantity"
     t.string   "pass"
     t.date     "delivery"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "depots", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "item_id"
+    t.decimal  "quantity",   precision: 6, scale: 2
+    t.date     "delivery"
+    t.string   "pass"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

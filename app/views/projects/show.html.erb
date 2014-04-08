@@ -1,9 +1,11 @@
 <% provide(:oldal_cim, 'AK-Projekt adatok') %>
 <p id="notice"><%= notice %></p>
 
-<h2>
-  <%= @project.name + ' - beszállított anyagok' %>
-</h2>
+<div class="well">
+  <h2>
+    <%= @project.name + ' - beszállított anyagok' %>
+  </h2>
+</div>
 
 <table id="currents" class="table">
   <thead>
@@ -33,3 +35,4 @@
 
 <%= link_to 'Anyag beszállítás', new_project_current_path(@project), class: "btn btn-primary" %> <hr>
 <%= link_to 'Tervezett anyagfelhasználás', project_plans_path(@project), class: "btn btn-default btn-xs" %>
+<%= link_to 'Anyag raktározás', new_depot_path, class: "btn btn-default btn-xs" %>

@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+    <div class="panel panel-primary">
+       <div class="panel-heading">
+        <% if @depot.new_record? %>
+          <h3>Anyag felvitele raktárba</h3>
+        <% else %>
+          <h3>Raktári anyag sor módosítása</h3>
+        <% end %>
+      </div>
+      <div class="panel-body">
+        <%= simple_form_for(@depot) do |f| %>
+          <% if @depot.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= @depot.errors.count %> hibát kérem javítson ki:</h2>
+
+              <ul>
+              <% @depot.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+            <div class="field">
+              <%= f.association :item, label: 'A beszállítandó anyag neve', :autofocus => true, include_blank: false %>
+            </div>
+          </br>
+          <div class="field">
+            <%= f.input :quantity, as: :decimal, label: 'Mennyiség a beszállítandó anyagból' %>
+          </div>
+          </br>
+          <div class="field">
+            <%= f.input :pass, label: 'A bizonylat neve és száma, megjegyzés' %>
+          </div>
+          <div class="field">
+            <%= f.input :delivery, label: 'A beszállítás időpontja' %>
+          </div>
+          <% if @depot.new_record? %>
+            <%= f.submit "Anyag raktározása", class: 'btn btn-primary btn-lg btn-block' %>
+          <% else %>
+            <%= f.submit "Raktári anyag sor frissítése", class: 'btn btn-primary btn-lg btn-block' %>
+          <% end %>
+        <% end %>
+      </div> <!--panel-body -->
+    </div> <!--panel-primary -->
+  </div> <!--col-md4 -->
+</div> <!--row -->

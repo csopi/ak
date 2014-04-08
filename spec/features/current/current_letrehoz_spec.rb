@@ -36,7 +36,6 @@ feature "Anyag beszállítható a projektre" do
     select "1", from: 'current[delivery(3i)]'
     click_button 'Anyag sor létrehozása'
     expect(page).to have_content("38-as N+F tégla 5827.36 klts Szállító: 324876")
-
   end
 
   scenario 'üres mennyiség és bizonylat mezővel nem jön létre anyag sor' do

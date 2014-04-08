@@ -1,6 +1,7 @@
 Ak::Application.routes.draw do
-  resources :items
-  resources :units
+  resources :depots, except: :show
+  resources :items, except: :destroy
+  resources :units, except: :destroy
   resources :projects do
     resources :plans
     resources :currents

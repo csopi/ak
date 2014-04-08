@@ -27,6 +27,10 @@ feature "Anyagok listázása" do
     expect(page).not_to have_title('AK - Ezen')
   end
 
+  scenario "Trölés link nincsen" do
+    expect(page).not_to have_link('Anyag törlése')
+  end
+
   scenario "helyesen tartalmazza az Anyagok oldal elemeit" do
     page.should have_selector('h1', text: 'Anyagok')
     expect(page).to have_link('Projektek')
@@ -39,7 +43,6 @@ feature "Anyagok listázása" do
     expect(page).to have_selector('tr', item.name)
     expect(page).to have_selector('tr', item.unit.name)
     expect(page).to have_link('Anyag szerkesztése')
-    expect(page).to have_link('Anyag törlése')
     expect(page).to have_link('Új anyag')
   end
 end

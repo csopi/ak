@@ -1,5 +1,6 @@
 class Item < ActiveRecord::Base
   belongs_to :unit
+  has_many :depots
   has_many :plans
   has_many :projects, through: :plans
 

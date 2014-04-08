@@ -3,9 +3,17 @@
     <div class="panel panel-primary">
        <div class="panel-heading">
         <% if @current.new_record? %>
-          <h3>Anyag beszállítás</h3>
+          <h3>
+            <%= @project.name %></br>
+            <span class="glyphicon glyphicon-plus"></span></br>
+            <%= 'Anyag beszállítás' %>
+          </h3>
         <% else %>
-          <h3>Beszállított anyag sor módosítása</h3>
+          <h3>
+            <%= @project.name %></br>
+            <span class="glyphicon glyphicon-pencil"></span></br>
+            <%= 'Beszállított anyag sor módosítása' %>
+          </h3>
         <% end %>
       </div>
       <div class="panel-body">

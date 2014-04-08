@@ -1,9 +1,11 @@
 <% provide(:oldal_cim, 'AK-Tervezett anyagfelhasználás') %>
 
-<h2>
-  <%= @project.name + ' tervezett anyagfelhasználása' %>
-</h2>
- 
+<div class="well">
+  <h2>
+    <%= @project.name + ' - tervezett anyagfelhasználása' %>
+  </h2>
+</div>
+
 <table class="table">
   <tbody>
     <% @project.plans.each do |plan| %>

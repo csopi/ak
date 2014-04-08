@@ -15,7 +15,6 @@
     <td><%= item.name %></td>
     <td><%= item.unit.name %></td>
     <td><%= link_to 'Anyag szerkesztése', edit_item_path(item) %></td>
-    <td><%= link_to 'Anyag törlése', item, method: :delete, data: { confirm: 'Biztosan törlöd az anyagot?' } %></td>
   </tr>
 <% end %>
 </table>

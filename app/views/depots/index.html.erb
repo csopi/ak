@@ -1,0 +1,35 @@
+<% provide(:oldal_cim, 'AK-Raktár') %>
+
+<div class="well">
+  <h2>
+    <%= 'A raktározott anyagok' %>
+  </h2>
+</div>
+
+<table id="depots" class="table">
+  <thead>
+    <tr>
+      <th>Anyag neve</th>
+      <th>Mennyisége</th>
+      <th>Mennyiségi egysége</th>
+      <th>Beszállítás dátuma</th>
+      <th>Bizonylat</th>
+      <th>Sor törlése</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @depots.each do |depot| %>
+      <tr>
+        <td><%= link_to depot.item.name, edit_depot_path(depot) %>
+        <td><%= depot.quantity  %></td>
+        <td><%= depot.item.unit.name  %></td>
+        <td><%= depot.delivery %> </td>
+        <td><%= depot.pass %> </td>
+        <td><%= link_to 'Sor törlése', depot, method: :delete, data: { confirm: 'Biztosan törlöd a sort?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<%= link_to 'Anyag raktározás', new_depot_path, class: "btn btn-primary" %>
