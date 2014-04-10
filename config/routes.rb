@@ -11,4 +11,6 @@ Ak::Application.routes.draw do
   end
   devise_for :users
   root 'pages#index'
+  match '/depotsum', to: 'pages#depotsum', via: 'get'
+  get '/projects/:id/projsum', to: 'projects#projsum', as: 'projsum'
 end

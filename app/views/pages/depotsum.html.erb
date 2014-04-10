@@ -1,0 +1,39 @@
+<% provide(:oldal_cim, 'Raktári anyagok') %>
+
+<div class="well">
+  <h2>
+    <%= 'A raktári anyagok mennyisége összesítve' %>
+  </h2>
+</div>
+
+<table id="depots" class="table">
+  <thead>
+    <tr>
+      <th>Anyag neve</th>
+      <th>Mennyisége</th>
+      <th>Mennyiségi egysége</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% filtered_depots.each do |depot| %>
+      <tr>
+        <td><%= depot.item.name %></td>
+        <td><%= depot.total_quantity  %></td>
+        <td><%= depot.item.unit.name  %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% filtered_depots.each_with_index do |depot, index| %>
+  <% counter = index-((index/4)*4) %>
+  <tr>
+    <td><%= depot.item.name %></td>
+    <td><%= depot.total_quantity  %></td>
+    <td><%= depot.item.unit.name  %></td>
+    <div class="progress">
+      <div class="progress-bar progress-bar-<%= bar_colors[counter] %>" role="progressbar" aria-valuenow="<%= depot.total_quantity %>" aria-valuemin="0" aria-valuemax="100" style="<%= 'width: ' + depot.total_quantity.to_s + '%' %>">
+      </div>
+    </div>
+  </tr>
+<% end %>

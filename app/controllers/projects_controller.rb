@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   before_filter :authenticate_user!
-  before_action :find_proj, :only => [:show, :edit, :update, :destroy]
+  before_action :find_proj, :only => [:show, :edit, :update, :destroy, :projsum]
 
   def index
     @projects = current_user.projects
@@ -60,6 +60,9 @@ class ProjectsController < ApplicationController
     }
 
     render :json => locale
+  end
+
+  def projsum
   end
 
   private

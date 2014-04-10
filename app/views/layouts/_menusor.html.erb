@@ -24,6 +24,12 @@
           </li>
           <li><%= link_to "Raktár", depots_path %></li>
           <li><%= link_to "Anyagok", items_path %></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Kimutatások<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Raktári anyagok összesítése", depotsum_path %></li>
+              </ul>
+          </li>
         <% end %>
       </ul>
       <ul class="nav navbar-nav  navbar-right">

@@ -1,0 +1,60 @@
+<% provide(:oldal_cim, 'Projekt összesítő') %>
+
+<div class="well">
+  <h2>
+    <%= @project.name + ' - anyagkimutatás' %>
+  </h2>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        Elszámolás
+      </div>
+    </div>
+    <table class="table">
+      <tbody>
+        
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        A tervezett anyagok
+      </div>
+    </div>
+    <table class="table">
+      <tbody>
+        <% filtered_plans.each do |plan| %>
+          <tr>
+            <td><%= plan.item.name %></td>
+            <td><%= plan.total_quantity.to_s + ' ' + plan.item.unit.name  %></td>
+          </tr>
+        <% end %>  
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        A beszállított anyagok
+      </div>
+    </div>
+    <table class="table">
+      <tbody>
+        <% filtered_currents.each do |current| %>
+          <tr>
+            <td><%= current.item.name %></td>
+            <td><%= current.total_quantity.to_s + ' ' + current.item.unit.name  %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+    
+</div>
