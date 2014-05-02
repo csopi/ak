@@ -10,6 +10,4 @@ module ProjectsHelper
     plans = storage.group("item_id")
     @filtered_plans = plans.select("item_id, sum(quantity) as total_quantity")
   end
-
-  
 end

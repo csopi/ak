@@ -1,4 +1,4 @@
-<% provide(:oldal_cim, 'Projekt összesítő') %>
+<% provide(:oldal_cim, 'AK-Projekt összesítő') %>
 
 <div class="well">
   <h2>
@@ -10,51 +10,65 @@
   <div class="col-md-12">
     <div class="panel panel-default">
       <div class="panel-body">
-        Elszámolás
+        <h4>TERVEZETT ANYAGOK</h4>
       </div>
     </div>
     <table class="table">
       <tbody>
-        
-      </tbody>
-    </table>
-  </div>
-
-  <div class="col-md-6">
-    <div class="panel panel-default">
-      <div class="panel-body">
-        A tervezett anyagok
-      </div>
-    </div>
-    <table class="table">
-      <tbody>
-        <% filtered_plans.each do |plan| %>
+        <% filtered_plans.each do |fipla| %>
           <tr>
-            <td><%= plan.item.name %></td>
-            <td><%= plan.total_quantity.to_s + ' ' + plan.item.unit.name  %></td>
+            <td><%= fipla.item.name %></td>
+            <% sign = 1 %>
+              <% filtered_currents.each do |current| %>
+                  <% if fipla.item.name == current.item.name %>
+                    <% if fipla.total_quantity > current.total_quantity %>
+                      <td style="color: green;"><%= "A beszállított mennyiség még nem érte el a tervezettett!"  %></td>    
+                    <% elsif fipla.total_quantity < current.total_quantity %>
+                      <td style="color: red;"><%= "A tervezett mennyiség meghaladva: " + (current.total_quantity - fipla.total_quantity).to_s + ' ' + fipla.item.unit.name + " többlet beszállítás történt az anyagból!"  %></td>
+                    <% elsif %>
+                      <td style="color: green;"><%= "A tervezett mennyiség, azaz " + fipla.total_quantity.to_s + ' ' + fipla.item.unit.name + " van jelenleg beszállítva."  %></td>
+                    <% end %>  
+                    <% sign = 2 %>
+                  <% end %>
+              <% end %>
+              <% if sign == 1 %>
+                <td style="color: blue;"><%= "A munkahelyre még nem lett beszállítva ebből az anyagból!"  %></td>
+              <% end %>
           </tr>
         <% end %>  
       </tbody>
     </table>
   </div>
 
-  <div class="col-md-6">
+  <div class="col-md-12">
     <div class="panel panel-default">
-      <div class="panel-body">
-        A beszállított anyagok
+      <div class="panel-body" style="background-color: #d99395;">
+        AZ ELŐRE NEM TERVEZETT ANYAGOK
       </div>
     </div>
     <table class="table">
       <tbody>
-        <% filtered_currents.each do |current| %>
-          <tr>
-            <td><%= current.item.name %></td>
-            <td><%= current.total_quantity.to_s + ' ' + current.item.unit.name  %></td>
-          </tr>
-        <% end %>
+        <% filtered_currents.each do |ficu| %>
+          <% sign = 1 %>
+            <% filtered_plans.each do |fipa| %>
+              <% if ficu.item.name == fipa.item.name %>    
+                <% sign = 2 %>
+              <% end %>
+            <% end %>
+            <% if sign == 1 %>
+              <tr>
+                <td><%= ficu.item.name %></td>
+                <td><%= ficu.total_quantity.to_s + ' ' + ficu.item.unit.name %></td>
+                <td><%= "Ez a beszállított anyag nem volt tervezve." %></td>
+              </tr>
+            <% end %>
+        <% end %>  
       </tbody>
     </table>
   </div>
-
     
 </div>
+
+<p>
+  <%= link_to 'Visszalépés a projekthez', project_path(@project), class: 'btn btn-default btn-xs' %>
+</p>

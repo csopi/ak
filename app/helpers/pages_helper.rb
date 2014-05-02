@@ -1,6 +1,7 @@
 module PagesHelper
   def filtered_depots
-    depots = Depot.group("item_id")
+    tank = Depot.where(:user_id => current_user.id)
+    depots = tank.group("item_id")
     @filtered_depots = depots.select("item_id, sum(quantity) as total_quantity")
   end
 

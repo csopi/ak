@@ -19,7 +19,7 @@
                   <li><%= link_to project.name, project_path(project) %></li>
                 <% end %>
                 <li class="divider"></li>
-                <li><%= link_to "Projektek", projects_path %></li>
+                <li><%= link_to "Összes projekt", projects_path %></li>
               </ul>
           </li>
           <li><%= link_to "Raktár", depots_path %></li>
@@ -28,6 +28,7 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Kimutatások<b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><%= link_to "Raktári anyagok összesítése", depotsum_path %></li>
+                <li><%= link_to "Az anyagok száma a rendszerben", itemsum_path %></li>
               </ul>
           </li>
         <% end %>

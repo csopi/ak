@@ -1,15 +1,15 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Name:</b>
+  <b>Anyag neve:</b>
   <%= @item.name %>
 </p>
 
 <p>
-  <b>Unit:</b>
+  <b>Mértékegysége:</b>
   <%= @item.unit_id %>
 </p>
 
 
-<%= link_to 'Edit', edit_item_path(@item) %> |
-<%= link_to 'Back', items_path %>
+<%= link_to 'Anyag szerkesztése', edit_item_path(@item) %> |
+<%= link_to 'Visszalépés', items_path %>
